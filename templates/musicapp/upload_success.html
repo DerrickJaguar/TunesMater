@@ -1,0 +1,32 @@
+<!-- upload_success.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-3">Uploaded Files</h2>
+        {% if files %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>File</th>
+                        <th>Uploaded At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for file in files %}
+                        <tr>
+                            <td>{{ file.title }}</td>
+                            <td><a href="{{ file.mp3_file.url }}">{{ file.mp3_file.name }}</a></td>
+                            <td>{{ file.uploaded_at }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No files uploaded yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}
